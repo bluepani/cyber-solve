@@ -1,0 +1,18 @@
+{
+  "name": "cybersolve-v0-action",
+  "version": "0.1.0",
+  "private": true,
+  "description": "CyberSolve V0 GitHub Action",
+  "type": "module",
+  "main": "src/index.js",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "check": "node --check src/index.js && node --check src/github/pr.js && node --check src/github/comments.js && node --check src/git/conflictScan.js && node --check src/git/commitPush.js"
+  },
+  "dependencies": {
+    "@actions/core": "^1.11.1",
+    "@actions/github": "^6.0.0"
+  }
+}

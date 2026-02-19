@@ -1,0 +1,36 @@
+name: CyberSolve
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  cybersolve:
+    name: CyberSolve V0
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout PR head branch
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install action dependencies
+        run: npm ci
+
+      - name: Run CyberSolve
+        uses: ./
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          comment-mode: only-on-conflict

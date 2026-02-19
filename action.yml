@@ -1,0 +1,16 @@
+name: CyberSolve V0
+description: Proof-of-concept PR conflict cleaner for merge-conflict markers.
+author: CyberSolve
+
+inputs:
+  github-token:
+    description: GitHub token used for API calls and git push.
+    required: true
+  comment-mode:
+    description: Comment behavior: always | only-on-conflict.
+    required: false
+    default: only-on-conflict
+
+runs:
+  using: node20
+  main: src/index.js
