@@ -1,6 +1,6 @@
 name: CyberSolve V0
 description: Proof-of-concept PR conflict cleaner for merge-conflict markers.
-author: CyberSolve
+author: Arjun Khokhar
 
 inputs:
   github-token:
